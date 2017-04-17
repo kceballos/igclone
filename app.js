@@ -14,22 +14,6 @@ app.use(bodyParser.json());
 
 
 
-//              added sqliteui stuff
-//————————————————————————————————————————————————
-const DB_NAME = './database.sqlite';
-
-// this is sqliteui stuff
-const socket = require('./sqliteui/websocket');
-app.use('/', express.static('./sqliteui/public', {
-    'index': ['index.html']
-}));
-const SocketInst = socket(DB_NAME, app);
-app = SocketInst.app;
-// end sqliteui stuff
-
-
-
-
 //                external routes
 //————————————————————————————————————————————————
 
