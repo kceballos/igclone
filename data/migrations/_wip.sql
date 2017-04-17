@@ -9,7 +9,7 @@ CREATE TABLE Users (
 );
 
 CREATE TABLE Posts (
-  id             INTEGER   PRIMARY KEY,
+  id             INTEGER   PRIMARY KEY AUTOINCREMENT,  /* added autoincrement to post IDs */
   description    TEXT      NOT NULL,
   url            TEXT      NOT NULL
 );
@@ -18,5 +18,5 @@ CREATE TABLE Posts (
 -- Down
 --------------------------------------------------------------------------------
 
--- DROP TABLE Users;
--- DROP TABLE Posts;
+DROP TABLE Users;
+DROP TABLE Posts;
