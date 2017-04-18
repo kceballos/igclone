@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const port = 3001;
 const morgan = require('morgan');
 const db = require('sqlite'); //added sqlite req to doc 
-
+const DB_NAME = './database.sqlite';
 
 //                  middleware
 //————————————————————————————————————————————————
@@ -75,3 +75,14 @@ app.post('/api/', function (req, res) {
 app.listen(port, ()=>{
   console.log('Server running on port: '  + port);
 })
+
+
+Promise.resolve()
+    .then(() => db.open(DB_NAME, { Promise }))
+    .then(() => db.migrate({ force: 'last' }))
+    .then(() => app.listen(port))
+    .then(() => {
+        console.log(`Server started on port ${port}`)
+     })
+    .catch(err => console.error(err.stack))
+
