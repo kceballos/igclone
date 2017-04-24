@@ -96,4 +96,3 @@ Promise.resolve()
   .then(()=> { console.log('------------------------------------------------------') })
   .then(()=> { console.log('\n') })
   .catch(err => console.error(err.stack))
-

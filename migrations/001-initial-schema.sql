@@ -14,7 +14,7 @@ CREATE TABLE Users (
 CREATE TABLE Follows (
   user_id        INTEGER   NOT NULL, -- equal to a user's ID
   followed       INTEGER   NOT NULL -- followed user id
-  -- FOREIGN KEY (user_id) REFERENCES Users(id) --using a specific key to refence another table 
+  FOREIGN KEY (user_id) REFERENCES Users(id) --using a specific key to refence another table 
 );
 
 
@@ -24,7 +24,7 @@ CREATE TABLE Posts (
   description    TEXT      NOT NULL, -- text field for post
   url            TEXT      NOT NULL, -- url to image hosted externally
   likes          INTEGER 
-  -- FOREIGN KEY (user_id) REFERENCES Users(id) --using a specific key to refence another table 
+  FOREIGN KEY (user_id) REFERENCES Users(id) --using a specific key to refence another table 
 );
 
 --------------------------------------------------------------------------------
