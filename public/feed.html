@@ -4,6 +4,10 @@
      <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title> Feed </title>
+    
+    <!--link to firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+
     <link rel='stylesheet' href='styles/admin.css'>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -39,15 +43,13 @@
 </div> <!-- container -->
 
 <div> <!--input for uploading images-->
-    <input type="file" class="js-fileElem" accept="image/jpg" style="display:none">
-    <a href="#" class="js-selectFile">Select file</a>
+    <input type="file" class="js-fileElem" accept="image/jpg">
+    <a href="#" class=".js-fileSelect">Select file</a>
 </div>
 
 <script src="js/main.js"></script>
 <script src="js/feed.js"></script>
+<script src="js/app-firebase.js"></script>
 
-<!--link to firebase -->
-<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
-<script src="app-firebase.js"></script>
 </body>
 </html>
