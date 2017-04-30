@@ -17,10 +17,13 @@
       <link rel="stylesheet" href='styles/main.css'>
    </head>
    <body clas="welcome">
-    	<div class="loginContainer"></div>
-			<div class="signupContainer"></div>
+    <div> <!--input for uploading images-->
+      <input type="file" class="js-fileElem" multiple accept="image/*" style="display:none">
+      <a href="#" class="js-fileSelect">Select some files</a>
+      </div>
       <!-- container -->
+      <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
       <script src="js/main.js"></script>
-      <script src="js/home.js"></script>
+      <script src="js/app-firebase.js"></script>
    </body>
 </html>

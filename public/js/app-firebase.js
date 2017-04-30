@@ -3,26 +3,26 @@
             throw new Error('This is a required arg');
         }; // validate
 
-        const uploadFile = (
-            selectFile = validate(),
+        const uploadFiles = (
+            fileSelectSel = validate(),
             fileElemSel = validate(),
             onFileChanged = validate()
         ) => {
             // select anchor tag and file input
-            const selectFile = document.querySelector(selectFile);
+            const fileSelect = document.querySelector(fileSelectSel);
             const fileElem = document.querySelector(fileElemSel);
 
-            if (selectFile === null || fileElem === null) {
+            if (fileSelect === null || fileElem === null) {
                 throw new Error('Required DOM elements not found by querySelector');
             }
 
             // click handler for fileElem
-            selectFile.addEventListener('click', (e) => {
+            fileSelect.addEventListener('click', (e) => {
                 e.preventDefault();
                 fileElem && fileElem.click();
             });
 
-            // change handler for selectFile
+            // change handler for fileSelect
             fileElem.addEventListener('change', (e) => onFileChanged(e.target.files))
         } // uploadFiles
 
@@ -44,7 +44,7 @@
         // Get a reference to the storage service, which is used to create references in your storage bucket
         const storageRef = firebase.storage().ref().child(FILE_STORAGE_REF);
 
-        uploadFiles('.js-selectFile', '.js-fileElem', (files) => {
+        uploadFiles('.js-fileSelect', '.js-fileElem', (files) => {
             if (!storageRef) {
                 throw new Error('Storage Ref not set!');
             }
@@ -62,6 +62,3 @@
             });
         }); // upload files
 })();
-
-
-
