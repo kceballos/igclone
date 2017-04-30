@@ -47,19 +47,15 @@ api.get('/feed', (req, res) => {
                       })
                       .catch(err => console.log(err.stack))
 
-  const feedData = db.all(`SELECT
-                            Follows.user_id as fuser_id,
-                            Follows.followed as fid,
-                            Users.username as uname,
-                            Posts.url as purl,
-                            Posts.description as pdesc
-                          FROM Follows
-                          INNER JOIN
-                            Users ON Follows.user_id = Users.id
-                          INNER JOIN
-                            Posts ON Follows.followed = Posts.user_id
-                          WHERE
-                            Follows.followed = ${userId}`) //taking the params from the request and parsing it in.
+  const feedData = db.all(`SELECT Follows.user_id as fuser_id,
+        Follows.followed as fid,
+        Users.username as uname,
+        Posts.url as purl,
+        Posts.description as pdesc
+        FROM Follows 
+        INNER JOIN Users ON Follows.user_id = Users.id
+        INNER JOIN Posts ON Follows.followed = Posts.user_id
+        WHERE user.id = ${req.params.userid}`) //taking the params from the request and parsing it in.
                 .then(v => {
                   return v
                 })
