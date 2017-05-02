@@ -58,6 +58,9 @@
             });
 
             Promise.all(fileUploads).then((items) => {
+                // IMAGE PREVIEW, RETURN TO THIS
+                document.querySelector('.js-previewImage').setAttribute("src",`${items[0]}`);
+                document.querySelector('.js-fbUrl').value = items[0]
                 console.log(items);
             });
         }); // upload files

@@ -14,12 +14,13 @@ api.use(parser.json());
 api.post('/create', (req, res) => {
   // get list of users //
   // console.log('here')
-  const user = req.body.userid;
+  const user = req.body.id;
   const image = req.body.image;
   const words = req.body.summary;
 
   console.log( user + " " + image + " " + words)
-
+ 
+// get posts by user
   db.get("SELECT * FROM Posts")
     .then(() => {
       db.exec(`INSERT INTO Posts (user_id, description, url) VALUES ('${user}','${words}','${image}')`)
@@ -48,14 +49,14 @@ api.get('/feed', (req, res) => {
                       .catch(err => console.log(err.stack))
 
   const feedData = db.all(`SELECT Follows.user_id as fuser_id,
-        Follows.followed as fid,
-        Users.username as uname,
-        Posts.url as purl,
-        Posts.description as pdesc
-        FROM Follows 
-        INNER JOIN Users ON Follows.user_id = Users.id
-        INNER JOIN Posts ON Follows.followed = Posts.user_id
-        WHERE user.id = ${req.params.userid}`) //taking the params from the request and parsing it in.
+      Follows.followed as fid,
+      Users.username as uname,
+      Posts.url as purl,
+      Posts.description as pdesc
+      FROM Follows 
+      INNER JOIN Users ON Follows.user_id = Users.id
+      INNER JOIN Posts ON Follows.followed = Posts.user_id
+      WHERE Users.id = ${req.params.user_id}`) //taking the params from the request and parsing it in.
                 .then(v => {
                   return v
                 })
